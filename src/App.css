@@ -1,0 +1,14 @@
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.sidebar {
+  background-color: #2d2d2d;
+  color: #fff;
+}
+
+.content {
+  margin-left: 270px;
+  padding: 20px;
+}
