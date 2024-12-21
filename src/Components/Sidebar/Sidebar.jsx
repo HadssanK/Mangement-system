@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
-import { MdDashboard, MdGroup, MdBusiness, MdPhotoCamera, MdMail, MdChevronRight, MdMenu } from "react-icons/md";
+import { MdDashboard, MdBusiness, MdHotel, MdMail, MdGroup, MdPhotoCamera, MdChevronRight, MdMenu } from "react-icons/md";
+import Logo from '../../assets/logo.png'
 
 const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const [dropdown, setDropdown] = useState({
-    manage: false,
-    gallery: false,
+    roomManagement: false,
+    reservation: false,
+    billing: false,
   });
 
   // Function to toggle dropdown
@@ -26,7 +28,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
       {/* Mobile Menu Button */}
       <button
         onClick={toggleSidebar}
-        className="md:hidden text-white text-3xl absolute top-4 left-4 z-50"
+        className="md:hidden text-black text-3xl absolute top-4 left-4 z-50"
       >
         <MdMenu />
       </button>
@@ -39,8 +41,8 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
       >
         {/* Sidebar Header */}
         <div className="flex items-center mb-8">
-          <span className="text-3xl font-bold text-purple-500">⚡</span>
-          <h1 className="ml-3 text-2xl font-semibold text-white">Admin Panel</h1>
+          <img src={Logo} alt="Logo" className="w-12 h-12" />
+          <h1 className="ml-3 text-2xl font-semibold text-white ">Admin Panel</h1>
         </div>
 
         {/* Sidebar Menu */}
@@ -56,73 +58,171 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
             </Link>
           </li>
 
-          {/* Manage (Dropdown) */}
+          {/* Room Management (Dropdown) */}
           <li>
             <div
-              onClick={() => toggleDropdown("manage")}
+              onClick={() => toggleDropdown("roomManagement")}
               className="block p-3 rounded-lg text-white font-medium text-lg bg-slate-800 hover:bg-green-600 hover:shadow-lg cursor-pointer"
             >
-              <MdGroup className="inline-block mr-2" />
-              Manage
+              <MdHotel className="inline-block mr-2" />
+              Room Management
               <MdChevronRight
-                className={`inline-block ml-2 transform transition-transform duration-300 ${dropdown.manage ? "rotate-90" : ""}`}
+                className={`inline-block ml-2 transform transition-transform duration-300 ${dropdown.roomManagement ? "rotate-90" : ""}`}
               />
             </div>
-            {dropdown.manage && (
+            {dropdown.roomManagement && (
               <ul className="ml-4 mt-2 space-y-2">
                 <li>
                   <Link
-                    to="/manage-donations"
+                    to="/RoomInventory"
                     className="block p-2 pl-4 text-white hover:bg-green-600 transition duration-300"
                   >
-                    <MdBusiness className="inline-block mr-2" />
-                    Manage Donations
+                    Room Inventory
                   </Link>
                 </li>
                 <li>
                   <Link
-                    to="/manage-partners"
+                    to="/RoomStatus"
                     className="block p-2 pl-4 text-white hover:bg-green-600 transition duration-300"
                   >
-                    <MdGroup className="inline-block mr-2" />
-                    Manage Partners
+                    Room Status
                   </Link>
                 </li>
               </ul>
             )}
           </li>
 
-          {/* Gallery Management (Dropdown) */}
+          {/* Reservation (Dropdown) */}
           <li>
             <div
-              onClick={() => toggleDropdown("gallery")}
+              onClick={() => toggleDropdown("reservation")}
               className="block p-3 rounded-lg text-white font-medium text-lg bg-slate-800 hover:bg-green-600 hover:shadow-lg cursor-pointer"
             >
-              <MdPhotoCamera className="inline-block mr-2" />
-              Gallery Management
+              <MdBusiness className="inline-block mr-2" />
+              Reservation
               <MdChevronRight
-                className={`inline-block ml-2 transform transition-transform duration-300 ${dropdown.gallery ? "rotate-90" : ""}`}
+                className={`inline-block ml-2 transform transition-transform duration-300 ${dropdown.reservation ? "rotate-90" : ""}`}
               />
             </div>
-            {dropdown.gallery && (
+            {dropdown.reservation && (
               <ul className="ml-4 mt-2 space-y-2">
                 <li>
                   <Link
-                    to="/gallery-management"
+                    to="/RoomBooking"
                     className="block p-2 pl-4 text-white hover:bg-green-600 transition duration-300"
                   >
-                    <MdPhotoCamera className="inline-block mr-2" />
-                    Manage Gallery
+                    Room Booking
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/Check-in"
+                    className="block p-2 pl-4 text-white hover:bg-green-600 transition duration-300"
+                  >
+                    Check-in
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/Check-out"
+                    className="block p-2 pl-4 text-white hover:bg-green-600 transition duration-300"
+                  >
+                    Check-out
                   </Link>
                 </li>
               </ul>
             )}
           </li>
 
-          {/* Other Pages */}
+          {/* Billing */}
+          <li>
+            <div
+              onClick={() => toggleDropdown("billing")}
+              className="block p-3 rounded-lg text-white font-medium text-lg bg-slate-800 hover:bg-green-600 hover:shadow-lg cursor-pointer"
+            >
+              <MdBusiness className="inline-block mr-2" />
+              Billing
+              <MdChevronRight
+                className={`inline-block ml-2 transform transition-transform duration-300 ${dropdown.billing ? "rotate-90" : ""}`}
+              />
+            </div>
+            {dropdown.billing && (
+              <ul className="ml-4 mt-2 space-y-2">
+                <li>
+                  <Link
+                    to="/Generate-bill"
+                    className="block p-2 pl-4 text-white hover:bg-green-600 transition duration-300"
+                  >
+                    Generate Bill
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/Invoices"
+                    className="block p-2 pl-4 text-white hover:bg-green-600 transition duration-300"
+                  >
+                    Invoices
+                  </Link>
+                </li>
+              </ul>
+            )}
+          </li>
+
+          {/* Housekeeping */}
           <li>
             <Link
-              to="/reply-queries"
+              to="/Housekeeping"
+              className="block p-3 rounded-lg text-white font-medium text-lg bg-slate-800 hover:bg-green-600 hover:shadow-lg transition-all duration-300 ease-in-out"
+            >
+              Housekeeping
+            </Link>
+          </li>
+
+          {/* Maintenance */}
+          <li>
+            <Link
+              to="/Maintenance"
+              className="block p-3 rounded-lg text-white font-medium text-lg bg-slate-800 hover:bg-green-600 hover:shadow-lg transition-all duration-300 ease-in-out"
+            >
+              Maintenance
+            </Link>
+          </li>
+
+          {/* Reports */}
+          <li>
+            <Link
+              to="/Reports"
+              className="block p-3 rounded-lg text-white font-medium text-lg bg-slate-800 hover:bg-green-600 hover:shadow-lg transition-all duration-300 ease-in-out"
+            >
+              Reports
+            </Link>
+          </li>
+
+          {/* Feedback */}
+          <li>
+            <Link
+              to="/Feedback"
+              className="block p-3 rounded-lg text-white font-medium text-lg bg-slate-800 hover:bg-green-600 hover:shadow-lg transition-all duration-300 ease-in-out"
+            >
+              Feedback
+            </Link>
+          </li>
+
+          {/* User Profile */}
+          <li>
+            <Link
+              to="/User-Profile"
+              className="block p-3 rounded-lg text-white font-medium text-lg bg-slate-800 hover:bg-green-600 hover:shadow-lg transition-all duration-300 ease-in-out"
+            >
+              <MdGroup className="inline-block mr-2" />
+              User Profile
+            </Link>
+          </li>
+
+          {/* Reply Queries */}
+          <li>
+            <Link
+              to="/Reply-queries"
               className="block p-3 rounded-lg text-white font-medium text-lg bg-slate-800 hover:bg-green-600 hover:shadow-lg transition-all duration-300 ease-in-out"
             >
               <MdMail className="inline-block mr-2" />

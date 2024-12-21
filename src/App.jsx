@@ -12,7 +12,6 @@ function App() {
       <div className="flex min-h-screen">
         {/* Sidebar */}
         <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
-
         {/* Content Section */}
         <div
           className={`flex-1 p-4 bg-gray-100 transition-all duration-300 ease-in-out ${
