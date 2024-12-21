@@ -1,14 +1,14 @@
 {
-  "homepage": "https://HadssanK.github.io/Hotal-Management",
   "name": "ngo",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://HadssanK.github.io/HM-Managemant",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+     "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist",
     "lint": "eslint .",
     "preview": "vite preview"
   },
