@@ -18,9 +18,13 @@ import ReplyQueries from '../../pages/Reply-queries';
 
 const RoutesPage = () => {
   return (
+    <>
+
+    <Dashboard/>
     <Routes>
       
-      <Route path="/dashboard" element={<Dashboard />} />
+   
+      <Route path="/Dashboard" element={<Dashboard />} />
       <Route path="/RoomInventory" element={<RoomInventory/>} />
       <Route path="/RoomStatus" element={<RoomStatus/>} />
       <Route path="/RoomBooking" element={<RoomBooking/>} />
@@ -36,6 +40,7 @@ const RoutesPage = () => {
       <Route path="/Reply-queries" element={<ReplyQueries/>} />
    
     </Routes>
+    </>
   );
 };
 
